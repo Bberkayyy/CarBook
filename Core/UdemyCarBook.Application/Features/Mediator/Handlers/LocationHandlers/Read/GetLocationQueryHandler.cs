@@ -11,11 +11,11 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Features.Mediator.Handlers.LocationHandlers.Read;
 
-public class GetLocationQueryHandler : IRequestHandler<GetLocationQuery, List<GetLocationQueryResult>>
+public class GetAuthorQueryHandler : IRequestHandler<GetLocationQuery, List<GetLocationQueryResult>>
 {
     private readonly IRepository<Location> _locationRepository;
 
-    public GetLocationQueryHandler(IRepository<Location> locationRepository)
+    public GetAuthorQueryHandler(IRepository<Location> locationRepository)
     {
         _locationRepository = locationRepository;
     }
