@@ -52,4 +52,16 @@ public class BlogsController : ControllerBase
         var values = await _mediator.Send(new GetLast3BlogsWithAuthorQuery());
         return Ok(values);
     }
+    [HttpGet("GetAllBlogsWithAuthors")]
+    public async Task<IActionResult> GetAllBlogsWithAuthors()
+    {
+        var values = await _mediator.Send(new GetAllBlogsWithAuthorQuery());
+        return Ok(values);
+    }
+    [HttpGet("GetBlogWithAuthorId")]
+    public async Task<IActionResult> GetBlogWithAuthorId(int id)
+    {
+        var values = await _mediator.Send(new GetBlogByAuthorIdQuery(id));
+        return Ok(values);
+    }
 }

@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Persistence.Context;
@@ -32,6 +27,7 @@ public class CarBookContext : DbContext
     public DbSet<Testimonial> Testimonials { get; set; }
     public DbSet<Author> Authors { get; set; }
     public DbSet<Blog> Blogs { get; set; }
+    public DbSet<TagCloud> TagClouds { get; set; }
   
 
 }

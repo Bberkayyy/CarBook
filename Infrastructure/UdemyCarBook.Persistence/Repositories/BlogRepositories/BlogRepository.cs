@@ -19,6 +19,25 @@ public class BlogRepository : IBlogRepository
         _context = context;
     }
 
+    public List<Blog> GetAllBlogsWithAuthor()
+    {
+        var values = _context
+            .Blogs
+            .Include(b => b.Author)
+            .ToList();
+        return values;
+    }
+
+    public List<Blog> GetBlogByAuthorId(int id)
+    {
+        var values = _context
+            .Blogs
+            .Include(x => x.Author)
+            .Where(x => x.Id == id)
+            .ToList();
+        return values;
+    }
+
     public List<Blog> GetLast3BlogWithAuthor()
     {
         var values = _context
