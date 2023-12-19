@@ -10,12 +10,14 @@ using UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers.Read;
 using UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers.Write;
 using UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers.Read;
 using UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers.Write;
+using UdemyCarBook.Application.Features.RepositoryPattern;
 using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Application.Interfaces.BlogInerfaces;
 using UdemyCarBook.Application.Interfaces.CarInterfaces;
 using UdemyCarBook.Application.Interfaces.CarPricingInterfaces;
 using UdemyCarBook.Application.Interfaces.TagCloudInterfaces;
 using UdemyCarBook.Application.ServiceRegistrations;
+using UdemyCarBook.Persistence.CommentRepositories;
 using UdemyCarBook.Persistence.Context;
 using UdemyCarBook.Persistence.Repositories;
 using UdemyCarBook.Persistence.Repositories.BlogRepositories;
@@ -33,6 +35,8 @@ builder.Services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
 builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
 builder.Services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
 builder.Services.AddScoped(typeof(ITagCloudRepository), typeof(TagCloudRepository));
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepository<>));
+
 
 builder.Services.AddScoped<CreateAboutCommandHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();

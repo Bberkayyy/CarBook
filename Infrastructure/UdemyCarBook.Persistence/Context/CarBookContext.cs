@@ -28,6 +28,7 @@ public class CarBookContext : DbContext
     public DbSet<Author> Authors { get; set; }
     public DbSet<Blog> Blogs { get; set; }
     public DbSet<TagCloud> TagClouds { get; set; }
+    public DbSet<Comment> Comments { get; set; }
   
 
 }
