@@ -60,10 +60,10 @@ public class CarsController : ControllerBase
         await _updateCarCommandHandler.Handle(command);
         return Ok("Araba bilgisi güncellendi.");
     }
-    [HttpDelete]
-    public async Task<IActionResult> RemoveCar(RemoveCarCommand command)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> RemoveCar(int id)
     {
-        await _removeCarCommandHandler.Handle(command);
+        await _removeCarCommandHandler.Handle(new RemoveCarCommand(id));
         return Ok("Araba biligisi silindi.");
     }
     [HttpGet("GetCarWithBrand")]
