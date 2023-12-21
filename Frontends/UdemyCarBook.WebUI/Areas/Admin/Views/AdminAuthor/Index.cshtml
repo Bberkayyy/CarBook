@@ -1,9 +1,8 @@
-﻿@model List<ResultBrandDTO>
-
-    @{
+﻿@model List<ResultAuthorDTO>
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
-    int count=0;
+    int count =0;
 }
 
     <div class="page-content">
@@ -13,46 +12,50 @@
                     @if(Model.Count()>0){
                     <div class="card">                        
                         <div class="card-body">
-                            <h4 class="card-title">Araç Markaları Listesi</h4>
+                            <h4 class="card-title">Yazar Listesi</h4>
                             <p class="card-subtitle mb-4">
-                                Arabaların markaları ile ilgili ekleme, silme, güncelleme gibi işlemleri bu sayfa üzerinden gerçekleştirebilirsiniz.
+                                Yazarlar ile ilgili işlemlerin gerçekleştirileceği sayfadır. Bilgileri eksiksiz girmeniz önemlidir.
                             </p>
                             <div class="table-responsive">
                                 <table class="table mb-0">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Marka Adı</th>
+                                            <th>Ad Soyad</th>
                                             <th>Sil</th>
                                             <th>Güncelle</th>
-                                            <th>Markaya Ait Araçlar</th>
+                                            <th>Yazarın Blogları</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach(var item in Model){
                                     count++;
-                                    <tr>
-                                        <th scope="row">@count</th>
-                                        <td>@item.Name</td>
-                                        <td><a href="/AdminBrand/RemoveBrand/@item.Id" class="btn btn-outline-danger">Sil</a></td>
-                                        <td><a href="/AdminBrand/UpdateBrand/@item.Id" class="btn btn-outline-success">Güncelle</a></td>
-                                        <td><a href="/AdminBrand/UpdateBrand/@item.Id" class="btn btn-outline-dark">Markaya Ait Araçlar</a></td>
+                                    <tr> 
+                                        <td>@count</td>
+                                        <td><img src="@item.ImageUrl" width="50" height="50" style="margin-right:10px; border-radius:50%;"/> @item.Name</td>
+                                        <td><a href="/Admin/AdminAuthor/RemoveAuthor/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+                                        <td><a href="/Admin/AdminAuthor/UpdateAuthor/@item.Id" class="btn btn-outline-success">Güncelle</a></td>
+                                        <td><a href="#" class="btn btn-outline-dark">Yazarın Blogları</a></td>
                                     </tr>
                                         }
                                     </tbody>
                                 </table>
-                                <a href="/AdminBrand/CreateBrand/" class="btn btn-outline-primary">Yeni Marka Ekle</a>
+                                <a href="/Admin/AdminAuthor/CreateAuthor/" class="btn btn-outline-primary">Yeni Yazar Ekle</a>
                             </div>
                         </div>                       
                     </div>
                     }
                      else{                        
-                     <p class="bg-danger text-white p-4 text-center card-body table-responsive">Araç markası bulunamadı. Araç markası eklemek için "Yeni Marka Ekle" butonuna tıklayınız.</p>
-                     <a href="/AdminBrand/CreateBrand/" class="btn btn-outline-primary">Yeni Marka Ekle</a>
+                     <p class="bg-danger text-white p-4 text-center card-body table-responsive">Yazar bulunamadı.Yazar eklemek için "Yeni Yazar Ekle" butonuna tıklayınız.</p>
+                     <a href="/Admin/AdminAuthor/CreateAuthor/" class="btn btn-outline-primary">Yeni Yazar Ekle</a>
                     }
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
 
 

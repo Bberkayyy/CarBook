@@ -1,0 +1,47 @@
+﻿@model UpdateAuthorDTO
+
+@{
+    ViewData["Title"] = "UpdateAuthor";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Yazar Güncelleme Sayfası</h4>
+                        <p class="card-subtitle mb-4">
+                            Yazar alanında güncellemek istediğiniz bilgilerin girişini aşağıdaki panelden yapabilirsiniz.
+                        </p>
+                        <form method="post">
+                            <input type="hidden" asp-for="Id" />
+                            <div class="form-group">
+                                <label for="exampleInputName">Ad Soyad</label>
+                                <input type="text" class="form-control" id="exampleInputName" asp-for="Name" placeholder="Yazar adı giriniz."/>
+                            </div>  
+                            <div class="form-group">
+                                <label for="exampleInputDescription">Açıklama</label>
+                                <input type="text" class="form-control" id="exampleInputDescription" asp-for="Description" placeholder="Yazar açıklaması giriniz."/>
+                            </div>  
+                            <div class="form-group">
+                                <label for="exampleInputImageUrl">Yazar Resim Url</label>
+                                <input type="text" class="form-control" id="exampleInputImageUrl" asp-for="ImageUrl" placeholder="Yazar resim linki giriniz."/>
+                            </div>                                                           
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Güncelle</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

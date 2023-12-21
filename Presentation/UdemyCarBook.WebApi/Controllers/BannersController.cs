@@ -46,7 +46,7 @@ public class BannersController : ControllerBase
         await _createBannerCommandHandler.Handle(command);
         return Ok("Afiş bilgisi eklendi.");
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> RemoveBanner(int id)
     {
         await _removeBannerCommandHandler.Handle(new RemoveBannerCommand(id));

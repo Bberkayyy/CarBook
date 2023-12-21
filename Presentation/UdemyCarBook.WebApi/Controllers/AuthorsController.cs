@@ -40,7 +40,7 @@ public class AuthorsController : ControllerBase
         await _mediator.Send(command);
         return Ok("Yazar bilgisi güncellendi.");
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> RemoveAuthor(int id)
     {
         await _mediator.Send(new RemoveAuthorCommand(id));
