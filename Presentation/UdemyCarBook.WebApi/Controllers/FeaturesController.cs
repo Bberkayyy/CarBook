@@ -39,7 +39,7 @@ public class FeaturesController : ControllerBase
         await _mediator.Send(command);
         return Ok("Özellik bilgisi güncellendi.");
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> RemoveFeature(int id)
     {
         await _mediator.Send(new RemoveFeatureCommand(id));

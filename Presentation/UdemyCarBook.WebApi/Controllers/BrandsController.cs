@@ -54,10 +54,10 @@ public class BrandsController : ControllerBase
         await _updateBrandCommandHandler.Handle(command);
         return Ok("Marka bilgisi güncellendi.");
     }
-    [HttpDelete]
-    public async Task<IActionResult> RemoveBrand(RemoveBrandCommand command)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> RemoveBrand(int id)
     {
-        await _removeBrandCommandHandler.Handle(command);
+        await _removeBrandCommandHandler.Handle(new RemoveBrandCommand(id));
         return Ok("Marka biligisi silindi.");
     }
 }
