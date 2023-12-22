@@ -1,0 +1,36 @@
+﻿@model UpdatePricingDTO
+
+@{
+    ViewData["Title"] = "UpdatePricing";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">ÖDeme Periyodu Güncelleme Sayfası</h4>
+                        <p class="card-subtitle mb-4">
+                            Araçların kiralanmasına ilişkin ödeme periyodu güncelleme sayfadır. Bu sayfa üzerinden ödeme periyodu güncellenebilir.
+                        </p>
+                        <form method="post">
+                            <input type="hidden" asp-for="Id" />
+                            <div class="form-group">
+                                <label for="exampleInputName">Periyot Adı</label>
+                                <input type="text" class="form-control" id="exampleInputName" asp-for="Name" placeholder="Periyot adı giriniz."/>
+                            </div>                                                                                                                  
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Güncelle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

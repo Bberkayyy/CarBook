@@ -1,0 +1,60 @@
+﻿@model List<ResultPricingDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12">
+                    @if(Model.Count()>0){
+                    <div class="card">                        
+                        <div class="card-body">
+                            <h4 class="card-title">Ödeme Türleri Alanı</h4>
+                            <p class="card-subtitle mb-4">
+                               Araçların kiralanmasına ilişkin ödeme türlerinin yer aldığı sayfadır. Bu sayfa üzerinden zaman periyodu işlemleri yapılabilir.
+                            </p>
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>                                            
+                                            <th>#</th>
+                                            <th>Periyot Adı</th>
+                                            <th>Sil</th>
+                                            <th>Güncelle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach(var item in Model){
+                                    count++;
+                                    <tr>                                        
+                                        <td>@count</td>
+                                        <td>@item.Name</td>
+                                        <td><a href="/Admin/AdminPricing/RemovePricing/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+                                        <td><a href="/Admin/AdminPricing/UpdatePricing/@item.Id" class="btn btn-outline-success">Güncelle</a></td>
+                                    </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <a href="/Admin/AdminPricing/CreatePricing/" class="btn btn-outline-primary">Yeni Periyot Ekle</a>
+                            </div>
+                        </div>                       
+                    </div>
+                    }
+                     else{                        
+                     <p class="bg-danger text-white p-4 text-center card-body table-responsive">Ödeme türü bulunamadı. Ödeme türü eklemek için "Yeni Periyot Ekle" butonuna tıklayınız.</p>
+                     <a href="/Admin/AdminPricing/CreatePricing/" class="btn btn-outline-primary">Yeni Periyot Ekle</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
