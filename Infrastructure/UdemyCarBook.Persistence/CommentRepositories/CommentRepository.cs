@@ -44,6 +44,14 @@ public class CommentRepository<T> : IGenericRepository<Comment>
         return _context.Comments.Find(id);
     }
 
+    public List<Comment> GetCommentsByBlogId(int blogId)
+    {
+        return _context
+            .Set<Comment>()
+            .Where(x => x.BlogId == blogId)
+            .ToList();
+    }
+
     public void Remove(Comment entity)
     {
         var value = _context.Comments.Find(entity.Id);

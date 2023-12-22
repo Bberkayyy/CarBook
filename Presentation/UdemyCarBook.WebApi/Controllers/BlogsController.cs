@@ -40,7 +40,7 @@ public class BlogsController : ControllerBase
         await _mediator.Send(command);
         return Ok("Blog bilgisi güncellendi.");
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> RemoveBlog(int id)
     {
         await _mediator.Send(new RemoveBlogCommand(id));

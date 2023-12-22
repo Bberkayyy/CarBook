@@ -24,7 +24,7 @@ public class CommentsController : ControllerBase
     [HttpPost]
     public IActionResult CreateComment(Comment comment)
     {
-        
+
         _commentsRepository.Create(comment);
         return Ok("Yorum başarıyla eklendi.");
     }
@@ -45,6 +45,12 @@ public class CommentsController : ControllerBase
     public IActionResult GetComment(int id)
     {
         var value = _commentsRepository.GetById(id);
+        return Ok(value);
+    }
+    [HttpGet("GetCommentsByBlogId")]
+    public IActionResult GetCommentsByBlogId(int blogId)
+    {
+        var value = _commentsRepository.GetCommentsByBlogId(blogId);
         return Ok(value);
     }
 }
