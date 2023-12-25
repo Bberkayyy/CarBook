@@ -40,7 +40,7 @@ public class SocialMediasController : ControllerBase
         await _mediator.Send(command);
         return Ok("Sosyal medya bilgisi güncellendi.");
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> RemoveSocialMedia(int id)
     {
         await _mediator.Send(new RemoveSocialMediaCommand(id));

@@ -39,7 +39,7 @@ public class LocationsController : ControllerBase
         await _mediator.Send(command);
         return Ok("Lokasyon bilgisi güncellendi.");
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> RemoveLocation(int id)
     {
         await _mediator.Send(new RemoveLocationCommand(id));

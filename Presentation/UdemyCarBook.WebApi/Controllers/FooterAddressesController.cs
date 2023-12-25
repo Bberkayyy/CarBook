@@ -40,7 +40,7 @@ public class FooterAddressesController : ControllerBase
         await _mediator.Send(command);
         return Ok("Alt adres bilgisi güncellendi.");
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> RemoveFooterAddress(int id)
     {
         await _mediator.Send(new RemoveFooterAddressCommand(id));

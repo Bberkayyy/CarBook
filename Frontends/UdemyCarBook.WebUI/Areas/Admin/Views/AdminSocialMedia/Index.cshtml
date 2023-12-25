@@ -1,0 +1,55 @@
+﻿@model List<ResultSocialMediaDTO>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12">
+                    @if(Model.Count()>0){
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Sosyal Medya Linkleri Alanı</h4>
+                            <p class="card-subtitle mb-4">
+                               Kullandığınız sosyal medya hesaplarına ait bilgilerin yönetildiği alandır.
+                            </p>
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Sosyal Medya</th>
+                                            <th>Sil</th>
+                                            <th>Güncelle</th>
+                                            <th>Hesaba Git</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach(var item in Model){
+                                    count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@item.Name</td>
+                                        <td><a href="/Admin/AdminSocialMedia/RemoveSocialMedia/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+                                        <td><a href="/Admin/AdminSocialMedia/UpdateSocialMedia/@item.Id" class="btn btn-outline-success">Güncelle</a></td>
+                                        <td><a href="/Admin/AdminSocialMedia/UpdateSocialMedia/@item.Id" class="btn btn-outline-dark">Hesaba Git</a></td>
+                                    </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <a href="/Admin/AdminSocialMedia/CreateSocialMedia/" class="btn btn-outline-primary">Yeni Sosyal Medya Ekle</a>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                     else{                        
+                     <p class="bg-danger text-white p-4 text-center card-body table-responsive">Sosyal medya bilgisi bulunamadı. Sosyal medya bilgisi eklemek için "Yeni Sosyal Medya Ekle" butonuna tıklayınız.</p>
+                    <a href="/Admin/AdminSocialMedia/CreateSocialMedia/" class="btn btn-outline-primary">Yeni Sosyal Medya Ekle</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
