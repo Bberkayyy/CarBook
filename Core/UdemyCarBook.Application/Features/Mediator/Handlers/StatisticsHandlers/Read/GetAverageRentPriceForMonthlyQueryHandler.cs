@@ -23,7 +23,7 @@ public class GetAverageRentPriceForMonthlyQueryHandler : IRequestHandler<GetAver
         var value = _statisticRepository.GetAverageRentPriceForMonthly();
         return new GetAverageRentPriceForMonthlyQueryResult
         {
-            AveragePriceForWeekly = value
+            AverageRentPriceForMonthly = value
         };
     }
 }

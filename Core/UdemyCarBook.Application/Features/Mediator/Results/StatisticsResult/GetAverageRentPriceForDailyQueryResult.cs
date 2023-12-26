@@ -8,5 +8,5 @@ namespace UdemyCarBook.Application.Features.Mediator.Results.StatisticsResult;
 
 public class GetAverageRentPriceForDailyQueryResult
 {
-    public decimal AveregePriceForDaily { get; set; }
+    public decimal AverageRentPriceForDaily { get; set; }
 }
