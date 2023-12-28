@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace UdemyCarBook.Domain.Entities;
 
-public class Location
+public class Customer
 {
     public int Id { get; set; }
     public string Name { get; set; }
-    public List<RentACar> RentACars { get; set; }
+    public string Surname { get; set; }
+    public string Email { get; set; }
+    public List<RentACarProcess> RentACarProcesses { get; set; }
 }
