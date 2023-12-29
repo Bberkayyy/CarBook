@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Mediator\Handlers\CarPricingHandlers\Write\**" />
+    <EmbeddedResource Remove="Features\Mediator\Handlers\CarPricingHandlers\Write\**" />
+    <None Remove="Features\Mediator\Handlers\CarPricingHandlers\Write\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\UdemyCarBook.Domain\UdemyCarBook.Domain.csproj" />
   </ItemGroup>
 
@@ -17,7 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Mediator\Handlers\CarPricingHandlers\Write\" />
+    <Folder Include="Features\Mediator\Queries\ReservationQueries\" />
+    <Folder Include="Features\Mediator\Results\ReservationResults\" />
   </ItemGroup>
 
 </Project>
