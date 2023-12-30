@@ -29,11 +29,11 @@
         </div>
         <div class="form-group">
             <label>Alınacak Lokasyon</label>
-            @Html.DropDownListFor(x => x.PickUpLocationId, (List<SelectListItem>)ViewBag.v, "---Alınacak lokasyonu seçiniz:", new { @class = "form-control" })
+            @Html.DropDownListFor(x => x.PickUpLocationId, (List<SelectListItem>)ViewBag.locations, "---Alınacak lokasyonu seçiniz:", new { @class = "form-control" })
         </div>
         <div class="form-group">
             <label>Teslim Edilecek Lokasyon</label>
-            @Html.DropDownListFor(x => x.DropOffLocationId, (List<SelectListItem>)ViewBag.v, "---Teslim edilecek lokasyonu seçiniz:", new { @class = "form-control" })
+            @Html.DropDownListFor(x => x.DropOffLocationId, (List<SelectListItem>)ViewBag.locations, "---Teslim edilecek lokasyonu seçiniz:", new { @class = "form-control" })
         </div>
         <div class="form-group">
             <label>Yaşınız</label>

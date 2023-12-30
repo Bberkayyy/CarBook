@@ -23,16 +23,17 @@ public class CreateReservationCommandHandler : IRequestHandler<CreateReservation
     {
         await _reservationRepository.CreateAsync(new Reservation
         {
-            Name= request.Name,
-            Surname= request.Surname,
-            Age= request.Age,
+            Name = request.Name,
+            Surname = request.Surname,
+            Age = request.Age,
             Phone = request.Phone,
-            CarId= request.CarId,
-            Description= request.Description,
-            DriverLicenseYear= request.DriverLicenseYear,
-            Email= request.Email,
-            DropOffLocationId= request.DropOffLocationId,
-            PickUpLocationId= request.PickUpLocationId,            
+            CarId = request.CarId,
+            Description = request.Description,
+            DriverLicenseYear = request.DriverLicenseYear,
+            Email = request.Email,
+            DropOffLocationId = request.DropOffLocationId,
+            PickUpLocationId = request.PickUpLocationId,
+            Status = "Rezervasyon Alındı."
         });
     }
 }

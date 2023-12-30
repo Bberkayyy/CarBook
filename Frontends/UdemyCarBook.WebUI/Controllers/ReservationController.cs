@@ -33,7 +33,7 @@ public class ReservationController : Controller
                                             Text = x.Name,
                                             Value = x.Id.ToString()
                                         }).ToList();
-        ViewBag.v = values2;
+        ViewBag.locations = values2;
         return View();
     }
     [HttpPost]
