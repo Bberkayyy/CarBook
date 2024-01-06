@@ -7,7 +7,7 @@ using UdemyCarBook.Application.Features.RepositoryPattern;
 using UdemyCarBook.Domain.Entities;
 using UdemyCarBook.Persistence.Context;
 
-namespace UdemyCarBook.Persistence.CommentRepositories;
+namespace UdemyCarBook.Persistence.Repositories.CommentRepositories;
 
 public class CommentRepository<T> : IGenericRepository<Comment>
 {
@@ -63,5 +63,9 @@ public class CommentRepository<T> : IGenericRepository<Comment>
     {
         _context.Comments.Update(entity);
         _context.SaveChanges();
+    }
+    public int GetCountCommentByBlog(int id)
+    {
+        return _context.Comments.Where(x => x.BlogId == id).Count();
     }
 }

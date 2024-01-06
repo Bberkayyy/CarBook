@@ -8,8 +8,10 @@ namespace UdemyCarBook.DTOs.CarPricingDTOs;
 
 public class ResultCarPricingWithModelDTO
 {
-	public string model { get; set; }
-	public decimal dailyAmount { get; set; }
-	public decimal weeklyAmount { get; set; }
-	public decimal monthlyAmount { get; set; }
+    public string model { get; set; }
+    public decimal dailyAmount { get; set; }
+    public decimal weeklyAmount { get; set; }
+    public decimal monthlyAmount { get; set; }
+    public string brandName { get; set; }
+    public string coverImageUrl { get; set; }
 }

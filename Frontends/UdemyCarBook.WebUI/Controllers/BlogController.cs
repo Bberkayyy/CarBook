@@ -32,6 +32,13 @@ public class BlogController : Controller
         ViewBag.v1 = "Bloglar";
         ViewBag.v2 = "Blog Detayı ve Yorumlar";
         ViewBag.blogId = id;
+        var client = _httpClientFactory.CreateClient();
+        var responseMessageCommentCountByBlog = await client.GetAsync($"https://localhost:7041/api/Comments/GetCommentCountByBlog?blogId={id}");
+        if (responseMessageCommentCountByBlog.IsSuccessStatusCode)
+        {
+            var jsonDataCommentCountByBlog = await responseMessageCommentCountByBlog.Content.ReadAsStringAsync();
+            ViewBag.CommentCountByBlog = jsonDataCommentCountByBlog;
+        }
         return View();
     }
 }
