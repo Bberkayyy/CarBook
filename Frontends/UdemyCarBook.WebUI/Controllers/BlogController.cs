@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 using UdemyCarBook.DTOs.BlogDTOs;
+using UdemyCarBook.DTOs.CommentDTOs;
 
 namespace UdemyCarBook.WebUI.Controllers;
 
@@ -38,6 +40,25 @@ public class BlogController : Controller
         {
             var jsonDataCommentCountByBlog = await responseMessageCommentCountByBlog.Content.ReadAsStringAsync();
             ViewBag.CommentCountByBlog = jsonDataCommentCountByBlog;
+        }
+        return View();
+    }
+    [HttpGet]
+    public PartialViewResult AddComment(int id)
+    {
+        ViewBag.blogId = id;
+        return PartialView();
+    }
+    [HttpPost]
+    public async Task<IActionResult> AddComment(CreateCommentDto createCommentDto)
+    {
+        var client = _httpClientFactory.CreateClient();
+        var jsonData = JsonConvert.SerializeObject(createCommentDto);
+        StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        var responseMessage = await client.PostAsync("https://localhost:7041/api/Comments/CreateCommentWithMediator", content);
+        if (responseMessage.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Index", "Blog");
         }
         return View();
     }
