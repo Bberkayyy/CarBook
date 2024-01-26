@@ -35,4 +35,10 @@ public class CarFeaturesController : ControllerBase
         _mediator.Send(new UpdateCarFeatureAvailableChangeToTrueCommand(id));
         return Ok("Güncelleme başarılı.");
     }
+    [HttpPost]
+    public async Task<IActionResult> CreateCarFeatureByCarID(CreateCarFeatureByCarCommand command)
+    {
+        _mediator.Send(command);
+        return Ok("Özellik eklendi.");
+    }
 }
