@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using UdemyCarBook.Domain;
 using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Persistence.Context;
@@ -31,6 +32,9 @@ public class CarBookContext : DbContext
     public DbSet<Comment> Comments { get; set; }
     public DbSet<RentACar> RentACars { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
+    public DbSet<CarReview> CarReviews { get; set; }
+    public DbSet<AppUser> AppUsers { get; set; }
+    public DbSet<AppRole> AppRoles { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using System.Text;
 using UdemyCarBook.DTOs.LocationDTOs;
 
 namespace UdemyCarBook.WebUI.Areas.Admin.Controllers;
 
+[Authorize(Roles = "Admin")]
 [Area("Admin")]
 [Route("Admin/AdminLocation")]
 public class AdminLocationController : Controller
@@ -18,13 +21,18 @@ public class AdminLocationController : Controller
     [Route("Index")]
     public async Task<IActionResult> Index()
     {
-        var client = _httpClientFactory.CreateClient();
-        var responseMessage = await client.GetAsync("https://localhost:7041/api/Locations");
-        if (responseMessage.IsSuccessStatusCode)
+        var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken").Value;
+        if (token is not null)
         {
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultLocationDTO>>(jsonData);
-            return View(values);
+            var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            var responseMessage = await client.GetAsync("https://localhost:7041/api/Locations");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultLocationDTO>>(jsonData);
+                return View(values);
+            }
         }
         return View();
     }
